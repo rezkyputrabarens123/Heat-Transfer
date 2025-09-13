@@ -9,7 +9,7 @@ CylinderRoots = @(x, Bi) x .* besselj(1, x) - Bi * besselj(0, x);
 % Find the first Nroot roots of the equation using a helper function
 r = FindZeros(CylinderRoots, Nroot, linspace(0, 50, 200), Bi);  % r is [Nroot x 1]
 
-% Time domain (dimensionless time ?)
+% Time domain
 tau = linspace(0, 1.5, 20);  % tau is [1 x Nt]
 
 % Create meshgrid for time and roots
@@ -27,7 +27,7 @@ ccn = cn .* ones(1, length(tau));  % Broadcast cn across columns to match Fn
 % Multiply coefficients with exponential decay
 pro = ccn .* Fn;  % Element-wise multiplication, both [Nroot x Nt]
 
-% Radial position (dimensionless radius ?)
+% Radial position
 rstar = linspace(0, 1, 20);  % [1 x Nr]
 
 % Create meshgrid for radial position and roots
@@ -36,8 +36,8 @@ rstar = linspace(0, 1, 20);  % [1 x Nr]
 % Bessel function evaluated at scaled radial positions
 Jo = besselj(0, rx .* R);  % [Nroot x Nr]
 
-% Compute temperature distribution ?(?, ?)
-the = Jo' * pro;  % Jo' is [Nr x Nroot], pro is [Nroot x Nt] ? the is [Nr x Nt]
+% Compute temperature distribution
+the = Jo' * pro;
 
 % Prepare meshgrid for plotting
 [rr, tt] = meshgrid(rstar, tau);  % rr and tt are [Nt x Nr]
