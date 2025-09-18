@@ -12,7 +12,6 @@ function Example12_3
     tau = linspace(0, 1, 101);  % 101 time points between 0 and 1
 
     % Solve PDE using pdepe
-    % m = 0 ? slab (Cartesian coordinate system)
     theta = pdepe(0, @pde1D, @pdeIC, @pdeBC, xi, tau, [], Bi, Tr, Sigma);
 
     % ============================================================
